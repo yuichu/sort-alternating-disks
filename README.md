@@ -3,6 +3,6 @@ Implementing algorithms
 
 Group members:
 
-Ada Lovelace adalovelace@csu.fullerton.edu
+Yujin Chung yujin.chung@csu.fullerton.edu
 
-Charles Babbage charlesbab@csu.fullerton.edu
+Jason Liu jliu96@csu.fullerton.edu
