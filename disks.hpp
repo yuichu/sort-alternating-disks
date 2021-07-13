@@ -96,6 +96,19 @@ public:
   bool is_initialized() const {
     // TODO: Write code for this function, including rewriting the return
     // statement, and then delete these comments.  
+    for(int i = 0; i < _colors.size(); i++) //2*total_count() doesnt work
+    {
+      int j = i % 2;
+      if (j == 0 && _colors[i] == DISK_LIGHT)
+      {
+        return false;
+      }
+      if(j == 1 && _colors[i] == DISK_DARK)
+      {
+        return false;
+      }
+    }
+    return true;
   }
 
   // Return true when this disk_state is fully sorted, with all dark disks
