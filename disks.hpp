@@ -117,7 +117,19 @@ public:
   bool is_sorted() const {
     // TODO: Write code for this function, including rewriting the return
     // statement, and then delete these comments.
-    return false;  
+    for(int i = 0; i < _colors.size(); i++) //2*total_count() doesnt work
+    {
+      int j = _colors.size()/2;
+      if (i < j && _colors[i] == DISK_LIGHT)
+      {
+        return false;
+      }
+      if(i > j && _colors[i] == DISK_DARK)
+      {
+        return false;
+      }
+    }
+    return true;
   }
 };
 
