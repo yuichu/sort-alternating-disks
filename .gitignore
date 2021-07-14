@@ -33,3 +33,6 @@
 
 # vs code
 .vscode/
+
+# Make file
+disks_test
