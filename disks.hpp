@@ -96,14 +96,14 @@ public:
   bool is_initialized() const {
     // TODO: Write code for this function, including rewriting the return
     // statement, and then delete these comments.  
-    for(size_t i = 0; i < _colors.size(); i++) //2*total_count() doesnt work
+    for(size_t i = 0; i < _colors.size(); i++) 
     {
-      size_t j = i % 2;
-      if (j == 0 && _colors[i] == DISK_LIGHT)
+      size_t j = i % 2; // i%2 is used to decide even or odd numbers
+      if (j == 0 && _colors[i] == DISK_LIGHT) // Return false when an even disk is light
       {
         return false;
       }
-      if(j == 1 && _colors[i] == DISK_DARK)
+      if(j == 1 && _colors[i] == DISK_DARK) // Return false when an odd disk is dark
       {
         return false;
       }
@@ -117,14 +117,14 @@ public:
   bool is_sorted() const {
     // TODO: Write code for this function, including rewriting the return
     // statement, and then delete these comments.
-    for(size_t i = 0; i < _colors.size(); i++) //2*total_count() doesnt work
+    for(size_t i = 0; i < _colors.size(); i++)
     {
-      size_t j = _colors.size()/2;
-      if (i < j && _colors[i] == DISK_LIGHT)
+      size_t j = _colors.size()/2; // Used to help split the vector of disk in half
+      if (i < j && _colors[i] == DISK_LIGHT) // If a disk on the lower half is light return false
       {
         return false;
       }
-      if(i > j && _colors[i] == DISK_DARK)
+      if(i > j && _colors[i] == DISK_DARK) // If a disk on the upper half is dark return false
       {
         return false;
       }
@@ -160,30 +160,29 @@ public:
 
 // Algorithm that sorts disks using the alternate algorithm.
 sorted_disks sort_alternate(const disk_state& before) {
-  disk_state before1 = before;
-  int count = 0;
-  for(size_t t = 0; t <= before1.total_count()/2; t++)
+  disk_state before1 = before; // Creates a copy of class disk_state
+  int count = 0;  
+  for(size_t t = 0; t <= before1.total_count()/2; t++)  // Outer loop goes from 0 to n
   {
-    for(size_t i = (t%2); i <= before1.total_count()-2; i+=2) //before1.total_count()-2
+    for(size_t i = (t%2); i <= before1.total_count()-2; i+=2)  // Arrays starts at either 0 or 1 +=2
     {
-      if(before1.get(i) == 1 && before1.get(i+1) == 0)
-      {
-        before1.swap(i);
-        count++;
+      if(before1.get(i) == 1 && before1.get(i+1) == 0)  // Checks the pair of disk  
+      {                                                 // 1 = light and 0 = dark
+        before1.swap(i); // Uses the swap function from disk_state
+        count++; // Whenever a swap occurs the counter increases
       }
     }
   }
   return sorted_disks(before1, count);
 }
 
-
 // Algorithm that sorts disks using the lawnmower algorithm.
 sorted_disks sort_lawnmower(const disk_state& before) {
   disk_state before1 = before;
   int count = 0;
-  for(size_t t = 0; t <= (before1.total_count()/2)/2; t++)
+  for(size_t t = 0; t <= (before1.total_count()/2)/2; t++)  
   {
-    for(size_t i = 1; i <= before1.total_count()-2; i+=2)
+    for(size_t i = 1; i <= before1.total_count()-2; i+=2)  // For loop going forward
     {
       if(before1.get(i) == 1 && before1.get(i+1) == 0)
       {
@@ -191,7 +190,7 @@ sorted_disks sort_lawnmower(const disk_state& before) {
         count++;
       }
     }
-    for(size_t j = before1.total_count()-2; j >= 1; j-=2)
+    for(size_t j = before1.total_count()-2; j >= 1; j-=2)  // Foor lop going backwards
     {
       if(before1.get(j) == 1 && before1.get(j+1) == 0)
       {
