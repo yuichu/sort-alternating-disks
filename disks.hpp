@@ -94,8 +94,6 @@ public:
   // that the first disk at index 0 is light, the second disk at index 1
   // is dark, and so on for the entire row of disks.
   bool is_initialized() const {
-    // TODO: Write code for this function, including rewriting the return
-    // statement, and then delete these comments.  
     for(size_t i = 0; i < _colors.size(); i++) 
     {
       size_t j = i % 2; // i%2 is used to decide even or odd numbers
@@ -115,8 +113,6 @@ public:
   // on the left (low indices) and all light disks on the right (high
   // indices).
   bool is_sorted() const {
-    // TODO: Write code for this function, including rewriting the return
-    // statement, and then delete these comments.
     for(size_t i = 0; i < _colors.size(); i++)
     {
       size_t j = _colors.size()/2; // Used to help split the vector of disk in half
@@ -190,7 +186,7 @@ sorted_disks sort_lawnmower(const disk_state& before) {
         count++;
       }
     }
-    for(size_t j = before1.total_count()-2; j >= 1; j-=2)  // Foor lop going backwards
+    for(size_t j = before1.total_count()-2; j >= 1; j-=2)  // For loop going backwards
     {
       if(before1.get(j) == 1 && before1.get(j+1) == 0)
       {
