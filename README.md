@@ -1,5 +1,4 @@
-# Project-1
-Implementing algorithms
+# Algorithm Engineering - Project 1
 
 Group members:
 
